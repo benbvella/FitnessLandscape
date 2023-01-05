@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Landscape</title>
+</head>
+    <body>
+        <h1>Fitness Landscape</h1>
+
+        <div id="stage">
+            <canvas id="map-layer" width="500" height="500">Game Unavailable :/</canvas>
+            <canvas id="species-layer" width="500" height="500">Game Unavailable :/</canvas>
+            <canvas id="notes-layer" width="500" height="500">Game Unavailable :/</canvas>
+        </div>
+
+        <style type="text/css">
+            #stage {
+                width: 500px;
+                height: 500px;
+                position: absolute;
+                border: 2px solid black;
+            }
+            canvas { position: absolute; }
+            #notes-layer { z-index: 2;}
+            #species-layer { z-index: 1;}
+            #map-layer { z-index: 0;}
+        </style>
+
+        <script>
+            function tick() {
+                seed = modifyseed(seed,1);
+                seed2 = modifyseed(seed2,2);
+                grid = seedtogrid(seed,nodes);
+                grid2 = seedtogrid(seed2,nodes2);
+                moveSpecies();
+                drawmap();
+                drawSpecies();
+                setTimeout(() => {tick()}, 20);
+            }
+        </script>
+        <script src="map.js"></script>
+        <script src="species.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
